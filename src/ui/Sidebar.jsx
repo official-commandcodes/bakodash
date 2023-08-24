@@ -19,18 +19,38 @@ function Sidebar() {
       </SidebarIcons>
 
       <SidebarIcons>
-        <MenuList text="Homepage" icon={<HiOutlineHome />} />
-        <MenuList text="Profile" icon={<CgProfile />} />
+        <MenuList text="Homepage" icon={<HiOutlineHome />} path="/" />
+        <MenuList
+          text="Profile"
+          icon={<CgProfile />}
+          path="/profile"
+        />
       </SidebarIcons>
 
       <SidebarIcons>
-        <MenuList text="Users" icon={<HiOutlineUser />} />
-        <MenuList text="Products" icon={<HiOutlineShoppingCart />} />
-        <MenuList text="Orders" icon={<HiOutlineShoppingBag />} />
+        <MenuList
+          text="Users"
+          icon={<HiOutlineUser />}
+          path="/users"
+        />
+        <MenuList
+          text="Products"
+          icon={<HiOutlineShoppingCart />}
+          path="/products"
+        />
+        <MenuList
+          text="Orders"
+          icon={<HiOutlineShoppingBag />}
+          path="/orders"
+        />
       </SidebarIcons>
 
       <SidebarIcons>
-        <MenuList text="Settings" icon={<AiOutlineSetting />} />
+        <MenuList
+          text="Settings"
+          icon={<AiOutlineSetting />}
+          path="/settings"
+        />
       </SidebarIcons>
     </div>
   );

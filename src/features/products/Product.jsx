@@ -1,29 +1,32 @@
+import Button from '../../ui/Button';
+import Table from '../../ui/Table';
+import TableOperationsWrapper from '../../ui/TableOperationsWrapper';
 import ProductRow from './ProductRow';
 import ProductsHeader from './ProductsHeader';
 
 function Product() {
   return (
-    <div className="p-1">
+    <Table>
       {/* Table Operations */}
-      <div className="flex justify-between items-center">
-        <h3 className="text-sm font-bold tracking-wider">Product</h3>
+      <TableOperationsWrapper>
+        <Table.Title title="Products" />
 
-        <div>
-          <button className="text-xs">Add new Product</button>
-          <select name="" id="">
-            <option value="">Filter by Gray</option>
-            <option value="">Filter by White</option>
-            <option value="">Filter by Black</option>
-          </select>
-        </div>
-      </div>
+        <TableOperationsWrapper>
+          <Button>Add new Product</Button>
 
-      <div className="bg-orange-300 px-1">
+          <Table.Selector />
+        </TableOperationsWrapper>
+      </TableOperationsWrapper>
+
+      <div className="bg-white mt-2 rounded-md md:p-2">
         {/* Table Header */}
         <ProductsHeader />
 
         {/* Table Body */}
-        <div className="flex gap-2 flex-col">
+        <div className="flex gap-2 flex-col py-1 mt-2 h-[25rem] overflow-y-scroll scrollbar-none">
+          <ProductRow />
+          <ProductRow />
+          <ProductRow />
           <ProductRow />
           <ProductRow />
           <ProductRow />
@@ -31,7 +34,7 @@ function Product() {
           <ProductRow />
         </div>
       </div>
-    </div>
+    </Table>
   );
 }
 
