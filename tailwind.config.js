@@ -7,6 +7,7 @@ export default {
       gridTemplateColumns: {
         14: 'repeat(14, minmax(0, 1fr))',
         12: 'repeat(12, minmax(0, 1fr))',
+        7: 'repeat(7, minmax(0, 1fr))',
       },
 
       gridTemplateRows: {
