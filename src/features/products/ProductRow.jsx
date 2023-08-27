@@ -1,10 +1,15 @@
 import { HiOutlineCheck, HiOutlineTrash } from 'react-icons/hi2';
 import { LiaEdit } from 'react-icons/lia';
+
+import CreateProductTable from './CreateProductTable';
+
 import Table from '../../ui/Table';
+import Modal from '../../ui/Modal';
 import Icon from '../../ui/Icon';
+import ConfirmDelete from '../../ui/ConfirmDelete';
 
 function ProductRow({ product }) {
-  const { availability, color, company, image, price, title } =
+  const { id, availability, color, company, image, price, title } =
     product;
 
   return (
@@ -12,8 +17,8 @@ function ProductRow({ product }) {
       <div className="hidden md:flex md:justify-center md:items-center">
         <img
           className="w-24 h-14 object-cover rounded-sm"
-          src="https://images.unsplash.com/photo-1659132453315-d11e295fbc41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGlwaG9uZSUyMDEzJTIwcHJvJTIwbWF4fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-          alt="Iphone 13 Pro max"
+          src={image}
+          alt={title}
         />
       </div>
 
@@ -30,8 +35,22 @@ function ProductRow({ product }) {
       </div>
 
       <div className="hidden md:flex gap-3 text-[17px]">
-        <Icon icon={<LiaEdit />} />
-        <Icon icon={<HiOutlineTrash />} />
+        <Modal>
+          <Modal.Open buttonName="edit">
+            <Icon icon={<LiaEdit />} />
+          </Modal.Open>
+          <Modal.Open buttonName="delete">
+            <Icon icon={<HiOutlineTrash />} />
+          </Modal.Open>
+
+          <Modal.Window windowName="edit">
+            <CreateProductTable product={product} id={id} />
+          </Modal.Window>
+
+          <Modal.Window windowName="delete">
+            <ConfirmDelete title={title} id={id} />
+          </Modal.Window>
+        </Modal>
       </div>
     </Table.Row>
   );

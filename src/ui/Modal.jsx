@@ -6,8 +6,11 @@ import {
   useState,
 } from 'react';
 import { HiXMark } from 'react-icons/hi2';
+
+import { useClickOutside } from '../hooks/useClickOutside';
+
 import Overlay from './Overlay';
-import Button from './Button';
+import ButtonIcon from './ButtonIcon';
 
 const ModalContext = createContext();
 
@@ -33,20 +36,22 @@ function Open({ children, buttonName }) {
 }
 
 function Window({ children, windowName }) {
-  const { openName } = useContext(ModalContext);
+  const { openName, close } = useContext(ModalContext);
+
+  const { ref } = useClickOutside({ openName, close, windowName });
 
   if (windowName !== openName) return null;
 
   return createPortal(
-    <Overlay>
-      <div className="h-screen flex justify-center items-center">
-        <div className="w-2/4 bg-red-400 rounded-md p-2 grid justify-items-stretch gap-3">
-          <Button onClick={close}>
-            <HiXMark />
-          </Button>
+    <Overlay refName={ref}>
+      <div className="bg-blue-50 rounded-md py-2 px-5 grid justify-items-stretch gap-3">
+        <ButtonIcon onClick={close}>
+          <HiXMark />
+        </ButtonIcon>
 
-          <div>{cloneElement(children, {})}</div>
-        </div>
+        {cloneElement(children, {
+          onCloseModal: () => close(),
+        })}
       </div>
     </Overlay>,
     document.body

@@ -38,11 +38,6 @@ function Sidebar() {
           icon={<HiOutlineShoppingCart />}
           path="/products"
         />
-        <MenuList
-          text="Orders"
-          icon={<HiOutlineShoppingBag />}
-          path="/orders"
-        />
       </SidebarIcons>
 
       <SidebarIcons>
